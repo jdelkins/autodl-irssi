@@ -1,10 +1,13 @@
 #!/bin/bash
 
-mkdir -p ~/.irssi/scripts/autorun
-cd ~/.irssi/scripts
-cp -R ~/autodl-irssi-community/* ./
-cp autodl-irssi.pl autorun/
-mkdir -p ~/.autodl
-touch ~/.autodl/autodl.cfg
+# set user nobody to specified user id (non unique)
+usermod -o -u "${PUID}" user
+echo "[info] Env var PUID  defined as ${PUID}"
 
-irssi
+# set group users to specified group id (non unique)
+groupmod -o -g "${PGID}" user
+echo "[info] Env var PGID defined as ${PGID}"
+
+chown -R ${PUID}:${PGID} /home/user
+echo "[info] Starting /home/user/start/sh"
+su user -c /home/user/start.sh
