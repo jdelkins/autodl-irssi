@@ -1,4 +1,4 @@
-### Autodl Irssi
+# Autodl Irssi
 
 Container for the autodl irssi plugin. Uses tmux. Due to a docker bug, I hacked
 together a script to allow you to connect to the running tmux using `docker
